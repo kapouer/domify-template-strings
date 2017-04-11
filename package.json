@@ -1,0 +1,9 @@
+{
+  "name": "domify-template-strings",
+  "version": "1.0.0",
+  "description": "Interpolate DOM Nodes into ES2015 Template Strings",
+  "main": "index.js",
+  "repository": "https://github.com/Loilo/domify-template-strings",
+  "author": "Florian Reuschel <florian@loilo.de>",
+  "license": "MIT"
+}
