@@ -2,8 +2,16 @@
   "name": "domify-template-strings",
   "version": "1.0.1",
   "description": "Interpolate DOM Nodes into ES2015 Template Strings",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel src --presets es2015 -d dist",
+    "prepublish": "npm run build"
+  },
   "repository": "https://github.com/Loilo/domify-template-strings",
   "author": "Florian Reuschel <florian@loilo.de>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1"
+  }
 }
