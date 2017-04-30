@@ -19,5 +19,17 @@ describe('domify tagged template string', function() {
     assert.equal(node.attributes.style.value, 'color:red')
     assert.equal(node.style.color, 'red')
   })
+
+  it('should replace a Node value', function() {
+    const items = [ 'One', 'Two', 'Three' ]
+    const list = domify `<ul>${items.map(label => {
+      const removeBtn = domify `<button>X</button>`
+      const node = domify `<li>${label} ${removeBtn}</li>`
+    return node
+    })}</ul>`
+    assert.equal(list.querySelectorAll('li').length, 3)
+    assert.equal(list.querySelectorAll('li > button').length, 3)
+    assert.equal(list.textContent, 'One XTwo XThree X')
+  })
 })
 
