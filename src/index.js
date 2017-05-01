@@ -5,7 +5,7 @@
 let counter = 0
 function generateId () {
   counter++
-  return `p-${counter}-${Math.floor(Math.random() * 1000000).toString(16)}`
+  return `p-${counter}-${Date.now()}`
 }
 
 
