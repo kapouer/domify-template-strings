@@ -9,6 +9,15 @@ describe('domify tagged template string', function() {
     assert.equal(node.ownerDocument, document)
   })
 
+  it('should return a DOM fragment', function() {
+    let node = domify`<tr><td>a</td></tr><tr><td>b</td></tr>`
+    assert.ok(node instanceof Node)
+    assert.equal(node.querySelectorAll('tr').length, 2)
+    assert.equal(node.querySelectorAll('tr > td').length, 2)
+    assert.equal(node.nodeType, Node.DOCUMENT_FRAGMENT_NODE)
+    assert.equal(node.ownerDocument, document)
+  })
+
   it('should replace attributes values', function() {
     let obj = {
       style: 'color:red',
