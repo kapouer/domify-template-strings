@@ -12,6 +12,7 @@ function generateId () {
 .* our template placeholder
 .*/
 
+let template = document.createElement('template')
 
 /**
  * Generates an array of DOM Nodes
@@ -36,8 +37,8 @@ function generateNodes (...partials) {
   }, []).join('')
 
   // Wrap in temporary container node
-  const container = document.createElement('div')
-  container.innerHTML = html
+  template.innerHTML = html
+  let container = template.content
 
   // Replace placeholders with real Nodes
   placeholders.forEach(({ id, node }) => {
@@ -46,7 +47,7 @@ function generateNodes (...partials) {
   })
 
   // Get array of Nodes
-  return Array.from(container.childNodes)
+  return container
 }
 
 /**
@@ -67,7 +68,9 @@ function taggedTemplateHandler (strings, ...values) {
 
 
 function domify (strings, ...values) {
-  return taggedTemplateHandler(strings, ...values)[0]
+  let result = taggedTemplateHandler(strings, ...values)
+  if (result.childNodes.length == 1) return result.firstChild
+  else return result
 }
 
 module.exports = domify
