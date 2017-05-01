@@ -8,7 +8,7 @@
     "prepublish": "npm run build",
     "mocha": "mocha -r jsdom-global/register",
     "karma": "karma start ./karma.conf.js",
-    "pretest": "browserify test/*.js -o dist/client-test.js -t [ babelify --presets [ es2015 ] ]",
+    "prekarma": "browserify test/*.js -o dist/client-test.js -t [ babelify --presets [ es2015 ] ]",
     "test": "npm run mocha && npm run karma"
   },
   "repository": "https://github.com/Loilo/domify-template-strings",
