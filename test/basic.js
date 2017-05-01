@@ -1,5 +1,5 @@
 const assert = require('assert')
-const domify = require('..')
+const domify = require('../src/')
 
 describe('domify tagged template string', function() {
   it('should return a DOM node', function() {
