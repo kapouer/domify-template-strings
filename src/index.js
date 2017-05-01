@@ -8,26 +8,10 @@ function generateId () {
   return `p-${counter}-${Date.now()}`
 }
 
-
 /**
- * Create a monkey-patched version of a Node array, adding an `.appendTo()` method
- * @param  {Node[]} nodes  An array of DOM Nodes
- * @return {Node[]}        The Nodes array with attached method
- */
-function monkeyPatchNodes (nodes) {
-  const nodesCopy = nodes.slice(0)
-  
-  Object.defineProperty(nodesCopy, 'appendTo', {
-    enumerable: false,
-    value (element) {
-      nodesCopy.forEach(node => {
-        element.appendChild(node)
-      })
-    }
-  })
+.* our template placeholder
+.*/
 
-  return nodesCopy
-}
 
 /**
  * Generates an array of DOM Nodes
@@ -84,10 +68,6 @@ function taggedTemplateHandler (strings, ...values) {
 
 function domify (strings, ...values) {
   return taggedTemplateHandler(strings, ...values)[0]
-}
-
-domify.list = function domifyList (strings, ...values) {
-  return monkeyPatchNodes(taggedTemplateHandler(strings, ...values))
 }
 
 module.exports = domify
